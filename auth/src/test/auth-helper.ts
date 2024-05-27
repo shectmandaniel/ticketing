@@ -15,7 +15,7 @@ export const signUp = async () => {
 
   const cookie = signupResponse.get('Set-Cookie');
   if (!cookie) {
-    fail();
+    fail('Cookie not found');
   }
 
   return cookie;
