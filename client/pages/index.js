@@ -1,14 +1,12 @@
-import axios from 'axios';
-
+import buildClient from '../api/build-client';
 const Lending = ({ currentUser }) => {
-  console.log('Component', currentUser);
-  return <h1>Lending</h1>;
+  return currentUser ? <h1>Signed in</h1> : <h1>Not Signed in</h1>;
 };
 
-// Lending.getInitialProps = async () => {
-//   const response = await axios.get('/api/users/currentuser');
-
-//   return response.data;
-// };
+Lending.getInitialProps = async (context) => {
+  const client = buildClient(context);
+  const { data } = await client.get('/api/users/currentuser');
+  return data;
+};
 
 export default Lending;
