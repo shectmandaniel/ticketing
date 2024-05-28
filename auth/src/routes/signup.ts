@@ -2,11 +2,9 @@ import express, { Request, Response } from 'express';
 import 'express-async-errors';
 import { body } from 'express-validator';
 import jwt from 'jsonwebtoken';
+import { BadRequestError, validateRequest } from '@stickethub/common';
 
 import { User } from '../modals/user';
-import { BadRequestError } from '../errors/bad-request-error';
-import { validateRequest } from '../middlewares/validate-request';
-
 const router = express.Router();
 
 router.post(
